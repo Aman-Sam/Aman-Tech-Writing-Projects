@@ -2,6 +2,6 @@ This is the first line used for the pull request test.
 
 This is the second line!
 
-This is the third, from the master.
+This is the third, from the main.
 
 This is the final fourth line. This is it.
