@@ -38,3 +38,5 @@ When the team installed by bot is deleted.   |Remove the target conversation ref
 |When the bot sends messages.     |When the target conversation reference doesn't exist, add it to the storage.         |
 
 [Placeholder for an image]
+
+When you send notifications, TeamsFx SDK creates a new conversation from the selected conversation reference, and then sends a message. For advanced usage, you can directly access the conversation reference to execute your own bot logic:
