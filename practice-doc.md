@@ -38,3 +38,43 @@ When the team installed by bot is deleted.   |Remove the target conversation ref
 |When the bot sends messages.     |When the target conversation reference doesn't exist, add it to the storage.         |
 
 [Placeholder for an image]
+
+When you send notifications, TeamsFx SDK creates a new conversation from the selected conversation reference, and then sends a message. For advanced usage, you can directly access the conversation reference to execute your own bot logic:
+
+# [TypeScript](#tab/ts)
+
+```TypeScript
+
+   // list all installation targets
+for (const target of await bot.notification.installations()) {
+    // call Bot Framework's adapter.continueConversation()
+    await target.adapter.continueConversation(target.conversationReference, async (context) => {
+        // your own bot logic
+        await context...
+    });
+}
+```
+
+# [C#](#tab/csharp)
+
+```C#
+   // list all installation targets
+foreach (var target in await _conversation.Notification.GetInstallationsAsync()) {
+    // call Bot Framework's adapter.ContinueConversationAsync()
+    await target.Adapter.ContinueConversationAsync(
+        target.BotAppId,
+        target.ConversationReference,
+        async (context, ctx) =>
+        {
+            // your own bot logic
+            await context...
+        },
+        cancellationToken);
+}
+```
+
+---
+
+## Notification bot installation
+
+A notification bot needs to be installed into a team, or a group chat, or as personal app, depending on the required scope. You need to select the installation target before adding the bot to your app.
